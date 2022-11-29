@@ -1,3 +1,6 @@
+const database = require("./database");
+const users = require("./database");
+
 const movies = [
   {
     id: 1,
@@ -25,17 +28,28 @@ const movies = [
   },
 ];
 
-const getMovies = (req, res) => {
+/* const getMovies = (req, res) => {
+  database
+  .query("select * from movies")
+  .then(([movies]) => {
   res.json(movies);
+
+})
+.catch((err) => {
+  console.error(err);
+  res.status(500).send("Error retrieving data from database");
+});
 };
+ */
+
 
 const getMovieById = (req, res) => {
   const id = parseInt(req.params.id);
 
-  const movie = movies.find((movie) => movie.id === id);
+  const user = users.find((user) => user.id === id);
 
-  if (movie != null) {
-    res.json(movie);
+  if (user != null) {
+    res.json(user);
   } else {
     res.status(404).send("Not Found");
   }
